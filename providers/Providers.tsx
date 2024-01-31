@@ -8,8 +8,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
       mode='payment'
       cartMode='client-only'
       stripe={process.env.NEXT_PUBLIC_STRIPE_KEY as string}
-      successUrl='https://xxxxxx/stripe/success'
-      cancelUrl='https://xxxxxx/stripe/error'
+      successUrl='https://quick-commerce-theta.vercel.app/stripe/success'
+      cancelUrl='https://quick-commerce-theta.vercel.app/stripe/error'
       currency='USD'
       billingAddressCollection={true}
       shouldPersist={true}
