@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quick-commerce-theta.vercel.app/sitemap.xml
