@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import { getPlaiceholder } from 'plaiceholder';
 
-interface ImageDynamicProps {
+interface ImageServerProps {
   src: string;
   alt: string;
   // All other props
   [x: string]: any;
 }
 
-const ImageDynamic = async ({ src, alt, ...rest }: ImageDynamicProps) => {
+const ImageServer = async ({ src, alt, ...rest }: ImageServerProps) => {
   const buffer = await fetch(src).then(async (res) =>
     Buffer.from(await res.arrayBuffer()),
   );
@@ -21,9 +21,10 @@ const ImageDynamic = async ({ src, alt, ...rest }: ImageDynamicProps) => {
       blurDataURL={base64}
       alt={alt}
       placeholder='blur'
+      loading='lazy'
       {...rest}
     />
   );
 };
 
-export default ImageDynamic;
+export default ImageServer;

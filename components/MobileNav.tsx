@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Menu } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { navLinks } from '@/constants';
 
@@ -13,7 +14,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
-import { Menu } from 'lucide-react';
 import { Button } from './ui/button';
 
 const MobileNav = () => {

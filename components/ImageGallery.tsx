@@ -43,7 +43,7 @@ const ImageGallery = ({ images, blurDataURLs }: Props) => {
     <div>
       <Carousel setApi={setApi}>
         <CarouselContent>
-          {images?.map((image: any, idx: any) => (
+          {images?.map((image: any, idx: number) => (
             <CarouselItem key={idx}>
               <div className='aspect-square w-full overflow-hidden rounded-lg border'>
                 <Image
@@ -55,6 +55,7 @@ const ImageGallery = ({ images, blurDataURLs }: Props) => {
                   alt='photo_alt_name'
                   className='h-full w-full cursor-pointer object-contain object-center p-1 lg:p-2'
                   sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                  loading='lazy'
                 />
               </div>
             </CarouselItem>

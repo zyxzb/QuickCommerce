@@ -4,13 +4,13 @@ import { fullProduct } from '@/app/interface';
 import { getAllProducts } from '@/app/actions/getAllProducts';
 import { client, urlFor } from '@/app/lib/sanity';
 import { getBuffersFromUrls } from '@/lib/getBase64';
-
-import AddToBag from '@/components/AddToBag';
-import CheckoutNow from '@/components/CheckoutNow';
-import ImageGallery from '@/components/ImageGallery';
-import { Button } from '@/components/ui/button';
 import { calculateOriginalPrice } from '@/lib/discountedPrice';
 import { discount } from '@/constants';
+
+import { Button } from '@/components/ui/button';
+import ImageGallery from '@/components/ImageGallery';
+import AddToBag from '@/components/AddToBag';
+import CheckoutNow from '@/components/CheckoutNow';
 
 export const revalidate = 60;
 

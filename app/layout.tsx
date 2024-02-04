@@ -26,7 +26,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <Sale />
             <Navbar />
             <ShoppingCartModal />
-            <main className='flex-1'>{children}</main>
+            <main className='flex flex-1 flex-col'>{children}</main>
             <Footer />
           </div>
         </Providers>

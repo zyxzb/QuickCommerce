@@ -1,10 +1,10 @@
-import { simplifiedProduct } from '@/app/interface';
-import { client } from '@/app/lib/sanity';
-
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
-import { Card } from './Card';
+import { simplifiedProduct } from '@/app/interface';
+import { client } from '@/app/lib/sanity';
+
+import Card from './Card';
 
 const getData = async () => {
   const query = `*[_type == "product"][0...4] | order(_createdAt asc) {

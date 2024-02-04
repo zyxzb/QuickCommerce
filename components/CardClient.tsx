@@ -1,22 +1,26 @@
-import Link from 'next/link';
-import ImageServer from '@/components/ImageServer';
+'use client';
 
+import Link from 'next/link';
+
+import ImageClient from './ImageClient';
 import { simplifiedProduct } from '@/app/interface';
 
 interface CardProps {
   product: simplifiedProduct;
+  blurDataURL: string;
 }
 
-const Card = ({ product }: CardProps) => {
+const CardClient = ({ product, blurDataURL }: CardProps) => {
   return (
     <Link
       href={`product/${product.slug}`}
       className='group relative overflow-hidden rounded-md border'
     >
       <div className='lg:h-70 aspect-square w-full overflow-hidden p-1'>
-        <ImageServer
+        <ImageClient
           src={product.imageUrl}
           alt={product.name}
+          blurDataURL={blurDataURL}
           className='h-full w-full object-contain object-center group-hover:opacity-75'
           width={300}
           height={300}
@@ -37,4 +41,4 @@ const Card = ({ product }: CardProps) => {
   );
 };
 
-export default Card;
+export default CardClient;

@@ -1,8 +1,10 @@
-import { client } from '../lib/sanity';
-import { simplifiedProduct } from '../interface';
+import { client, urlFor } from '../lib/sanity';
 import { getAllCategories } from '../actions/getAllCategories';
+import { getBuffersFromUrls } from '@/lib/getBase64';
 
-import { Card } from '@/components/Card';
+import PaginationSection from '@/components/PaginationSection';
+
+import { simplifiedProduct } from '../interface';
 
 export const revalidate = 60;
 
@@ -49,20 +51,16 @@ export const generateStaticParams = async () => {
 
 const CategoryPage = async ({ params }: { params: { category: string } }) => {
   const data: simplifiedProduct[] = await getData(params.category);
+  const images: string[] = data.map((image) => urlFor(image.imageUrl).url());
+
+  const blurDataURLs = await getBuffersFromUrls(images);
+
   return (
-    <div className='bg-white'>
-      <div className='mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <div className='flex items-center justify-between'>
-          <h2 className='text-2xl font-bold tracking-tight text-gray-900'>
-            Our newest for {params.category}
-          </h2>
-        </div>
-        <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
-          {data.map((product) => (
-            <Card key={product._id} product={product} />
-          ))}
-        </div>
-      </div>
+    <div className='mx-auto flex max-w-2xl flex-1 flex-col bg-white px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+      <h2 className='text-2xl font-bold tracking-tight text-gray-900'>
+        Our newest for {params.category}
+      </h2>
+      <PaginationSection products={data} blurDataURLs={blurDataURLs} />
     </div>
   );
 };

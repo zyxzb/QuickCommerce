@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import AnimateBanner from './AnimateBanner';
 import { navLinks } from '@/constants';
+
+import AnimateBanner from './AnimateBanner';
 
 const Hero = () => {
   return (
