@@ -1,4 +1,4 @@
-import { getAllBlogPosts } from '@/app/actions/getAllProducts';
+import { getAllBlogPosts } from '@/app/actions/getAllBlogPosts';
 import { blogPost } from '@/app/interface';
 import { client, urlFor } from '@/app/lib/sanity';
 import ImageServer from '@/components/ImageServer';
@@ -30,7 +30,7 @@ export const generateMetadata = async ({
     title: `${post.title} - QuickCommerce`,
     description: `${post.title} - ${post.smallDescription.slice(0, 120)}...`,
     alternates: {
-      canonical: `https://quick-commerce-theta.vercel.app/blog/${post.title}`,
+      canonical: `https://quick-commerce-theta.vercel.app/blog/${post.currentSlug}`,
     },
     // add to Sanity labels for metadata
   };
