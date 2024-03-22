@@ -16,12 +16,12 @@ const Navbar = () => {
 
   return (
     <header className='mb-8 border-b'>
-      <div className='mx-auto flex max-w-2xl items-center justify-between px-4 sm:px-6 lg:max-w-7xl'>
+      <div className='mx-auto flex max-w-2xl items-center justify-between px-4 sm:px-4 lg:max-w-7xl'>
         <Link href='/' className='text-2xl font-bold md:text-4xl'>
           Quick<span className='text-primary'>Commerce</span>
         </Link>
 
-        <nav className='hidden gap-12 lg:flex 2xl:ml-16'>
+        <nav className='hidden gap-10 lg:flex 2xl:ml-16'>
           <Link
             href='/'
             className={`text-lg font-semibold transition duration-200 hover:text-primary ${
@@ -41,6 +41,14 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
+          <Link
+            href='/blog'
+            className={`text-lg font-semibold transition duration-200 hover:text-primary ${
+              pathname === '/blog' ? 'text-primary ' : 'text-gray-600'
+            }`}
+          >
+            Blog
+          </Link>
         </nav>
 
         <div className='flex divide-x border-x'>

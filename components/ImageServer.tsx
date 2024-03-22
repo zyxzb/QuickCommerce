@@ -21,7 +21,6 @@ const ImageServer = async ({ src, alt, ...rest }: ImageServerProps) => {
       blurDataURL={base64}
       alt={alt}
       placeholder='blur'
-      loading='lazy'
       {...rest}
     />
   );
