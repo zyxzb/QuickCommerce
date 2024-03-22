@@ -59,7 +59,7 @@ const MobileNav = () => {
           <DropdownMenuItem
             asChild
             className={`cursor-pointer pr-4 text-lg font-semibold transition duration-200 hover:text-primary ${
-              pathname === '/' ? 'text-primary' : 'text-gray-600'
+              pathname === '/blog' ? 'text-primary' : 'text-gray-600'
             }`}
           >
             <Link href='/blog'>Blog</Link>
