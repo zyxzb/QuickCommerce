@@ -19,7 +19,7 @@ export interface fullProduct {
 }
 
 export interface blogPost {
-  currentSlug: string;
+  slug: string;
   title: string;
   content: any;
   image: string;

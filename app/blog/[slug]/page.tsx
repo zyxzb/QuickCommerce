@@ -30,7 +30,7 @@ export const generateMetadata = async ({
     title: `${post.title} - QuickCommerce`,
     description: `${post.title} - ${post.smallDescription.slice(0, 120)}...`,
     alternates: {
-      canonical: `https://quick-commerce-theta.vercel.app/blog/${post.currentSlug}`,
+      canonical: `https://quick-commerce-theta.vercel.app/blog/${post.slug}`,
     },
     // add to Sanity labels for metadata
   };
@@ -61,7 +61,7 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
           priority
         />
       </div>
-      <div className='prose-li:marker:text-primary prose-a:text-primary my-16 max-w-none'>
+      <div className='my-16 max-w-none prose-a:text-primary prose-li:marker:text-primary'>
         <PortableText value={data.content} />
       </div>
     </article>
