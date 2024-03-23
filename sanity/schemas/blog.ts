@@ -4,6 +4,16 @@ export default {
   title: 'Blog',
   fields: [
     {
+      name: 'metaTitle',
+      type: 'string',
+      title: 'Meta title',
+    },
+    {
+      name: 'metaDescription',
+      type: 'text',
+      title: 'Meta Description',
+    },
+    {
       name: 'title',
       type: 'string',
       title: 'Title of blog article',

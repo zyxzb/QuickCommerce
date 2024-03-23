@@ -9,6 +9,8 @@ export const revalidate = 60;
 const getData = async (slug: string) => {
   const query = `*[_type == 'blog' && slug.current == "${slug}"][0]{
     "slug": slug.current,
+    metaTitle,
+    metaDescription,
     title,
     content,
     image,
@@ -27,12 +29,11 @@ export const generateMetadata = async ({
 }) => {
   const post: blogPost = await getData(params.slug);
   return {
-    title: `${post.title} - QuickCommerce`,
-    description: `${post.title} - ${post.smallDescription.slice(0, 120)}...`,
+    title: post.metaTitle,
+    description: post.metaDescription,
     alternates: {
       canonical: `https://quick-commerce-theta.vercel.app/blog/${post.slug}`,
     },
-    // add to Sanity labels for metadata
   };
 };
 

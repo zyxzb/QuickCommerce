@@ -19,6 +19,8 @@ export interface fullProduct {
 }
 
 export interface blogPost {
+  metaTitle: string;
+  metaDescription: string;
   slug: string;
   title: string;
   content: any;
