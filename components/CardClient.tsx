@@ -14,9 +14,9 @@ const CardClient = ({ product, blurDataURL }: CardProps) => {
   return (
     <Link
       href={`product/${product.slug}`}
-      className='group relative overflow-hidden rounded-md border'
+      className='group overflow-hidden rounded-md border'
     >
-      <div className='lg:h-70 aspect-square w-full overflow-hidden p-1'>
+      <div className='relative aspect-square overflow-hidden p-1'>
         <ImageClient
           src={product.imageUrl}
           alt={product.name}

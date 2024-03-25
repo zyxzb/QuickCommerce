@@ -1,54 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { ShoppingBagIcon } from 'lucide-react';
 import { useShoppingCart } from 'use-shopping-cart';
 
-import { navLinks } from '@/constants';
-
 import { Button } from './ui/button';
 import MobileNav from './MobileNav';
+import DesktopNav from './DesktopNav';
 
 const Navbar = () => {
-  const pathname = usePathname();
   const { handleCartClick } = useShoppingCart();
 
   return (
     <header className='mb-8 border-b'>
       <div className='mx-auto flex max-w-2xl items-center justify-between px-4 sm:px-4 lg:max-w-7xl'>
-        <Link href='/' className='text-2xl font-bold md:text-4xl'>
+        <Link
+          href='/'
+          className='text-2xl font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 md:text-4xl'
+        >
           Quick<span className='text-primary'>Commerce</span>
         </Link>
 
-        <nav className='hidden gap-10 lg:flex 2xl:ml-16'>
-          <Link
-            href='/'
-            className={`text-lg font-semibold transition duration-200 hover:text-primary ${
-              pathname === '/' ? 'text-primary ' : 'text-gray-600'
-            }`}
-          >
-            Home
-          </Link>
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`text-lg font-semibold transition duration-200 hover:text-primary ${
-                pathname === link.href ? 'text-primary ' : 'text-gray-600'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link
-            href='/blog'
-            className={`text-lg font-semibold transition duration-200 hover:text-primary ${
-              pathname === '/blog' ? 'text-primary ' : 'text-gray-600'
-            }`}
-          >
-            Blog
-          </Link>
+        <nav className='hidden lg:flex'>
+          <DesktopNav />
         </nav>
 
         <div className='flex divide-x border-x'>

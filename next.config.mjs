@@ -20,6 +20,7 @@ const nextConfig = {
       },
     ],
   },
+  reactStrictMode: false,
 };
 
 export default withPlaiceholder(nextConfig);

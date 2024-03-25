@@ -25,7 +25,7 @@ const Hero = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className='flex items-center justify-center p-2 text-gray-500 transition duration-100 hover:bg-gray-100 sm:px-4 sm:py-2'
+                className='flex items-center justify-center p-2 text-gray-500 transition duration-100 hover:bg-gray-100 focus-visible:bg-gray-100 focus-visible:outline-none sm:px-4 sm:py-2'
               >
                 {link.name}
               </Link>
