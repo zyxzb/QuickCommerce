@@ -12,10 +12,7 @@ interface CardProps {
 
 const CardClient = ({ product, blurDataURL }: CardProps) => {
   return (
-    <Link
-      href={`product/${product.slug}`}
-      className='group overflow-hidden rounded-md border'
-    >
+    <Link href={`product/${product.slug}`} className='group rounded-md border'>
       <div className='relative aspect-square overflow-hidden p-1'>
         <ImageClient
           src={product.imageUrl}

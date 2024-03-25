@@ -34,7 +34,7 @@ const PaginationSection = ({
           />
         ))}
       </section>
-      <div className='mt-auto'>
+      <div className='md:mt-auto'>
         <div className='mt-6'>
           <PaginationShadcn
             totalPosts={products.length}

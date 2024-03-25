@@ -9,11 +9,8 @@ interface CardProps {
 
 const Card = ({ product }: CardProps) => {
   return (
-    <Link
-      href={`product/${product.slug}`}
-      className='group relative overflow-hidden rounded-md border'
-    >
-      <div className='lg:h-70 aspect-square w-full overflow-hidden p-1'>
+    <Link href={`product/${product.slug}`} className='group rounded-md border'>
+      <div className='relative aspect-square overflow-hidden p-1'>
         <ImageServer
           src={product.imageUrl}
           alt={product.name}
