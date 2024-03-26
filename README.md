@@ -16,15 +16,15 @@ Features:
 ##  [Visit project url](https://quick-commerce-theta.vercel.app/)
 
 <p align="center" width="100%">
-  <img src="public/screen1.png" alt="home page" title="screen1" />
+  <img src="public/newScreen1.png" alt="home page" title="screen1" />
 </p>
 
 <p align="center" width="100%">
-  <img src="public/screen2.png" alt="products with pagination" title="screen2" />
+  <img src="public/newScreen2.png" alt="products with pagination" title="screen2" />
 </p>
 
 <p align="center" width="100%">
-  <img src="public/screen3.png" alt="product page" title="screen3" />
+  <img src="public/newScreen3.png" alt="product page" title="screen3" />
 </p>
 <p align="center" width="100%">
   <img src="public/screen4.png" alt="blog section" title="screen1" />
