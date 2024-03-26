@@ -3,6 +3,7 @@ import { blogPost } from '@/app/interface';
 import { client, urlFor } from '@/app/lib/sanity';
 import ImageServer from '@/components/ImageServer';
 import { PortableText } from '@portabletext/react';
+import { Scaling } from 'lucide-react';
 
 export const revalidate = 60;
 
@@ -51,17 +52,21 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
       <h1 className='my-10 text-3xl font-bold text-black md:my-16 lg:text-5xl'>
         {data.title}
       </h1>
-      <p className=''>{data.smallDescription}</p>
-      <div className='relative'>
+      <p>{data.smallDescription}</p>
+      <figure className='group relative aspect-video cursor-pointer transition-all duration-500 md:aspect-[3/1] md:hover:aspect-video'>
+        <div className='invisible right-5 top-5 hidden rounded-lg bg-black/20 p-3 text-white opacity-100 backdrop-blur-md transition-opacity duration-500 group-hover:opacity-0 md:visible md:absolute md:block'>
+          <Scaling className='opacity-100' />
+        </div>
         <ImageServer
           src={urlFor(data.image).url()}
           alt={data.titleImage}
           width={1000}
           height={200}
-          className='h-[200px] w-full rounded-lg object-cover md:h-[300px]'
+          className='h-full w-full rounded-lg object-cover'
           priority
         />
-      </div>
+        <figcaption>Photo: {data.title}</figcaption>
+      </figure>
       <div className='my-16 max-w-none prose-a:text-primary prose-li:marker:text-primary'>
         <PortableText value={data.content} />
       </div>

@@ -36,7 +36,9 @@ const DesktopNav = () => {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+          <NavigationMenuTrigger className='text-gray-600'>
+            Categories
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className='grid w-[400px] gap-3 p-4'>
               {navLinks.map((link) => (
