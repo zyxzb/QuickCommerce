@@ -27,6 +27,8 @@
     "next-sanity": "^7.0.10",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.51.4",
+    "react-hot-toast": "^2.4.1",
     "sharp": "^0.33.1",
     "stripe": "^14.12.0",
     "tailwind-merge": "^2.2.0",

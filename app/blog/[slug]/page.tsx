@@ -1,6 +1,8 @@
 import { getAllBlogPosts } from '@/app/actions/getAllBlogPosts';
 import { blogPost } from '@/app/interface';
 import { client, urlFor } from '@/app/lib/sanity';
+import Comments from '@/components/Comments';
+import CommentsForm from '@/components/CommentsForm';
 import ImageServer from '@/components/ImageServer';
 import { PortableText } from '@portabletext/react';
 import { Scaling } from 'lucide-react';
@@ -9,6 +11,7 @@ export const revalidate = 60;
 
 const getData = async (slug: string) => {
   const query = `*[_type == 'blog' && slug.current == "${slug}"][0]{
+    _id,
     "slug": slug.current,
     metaTitle,
     metaDescription,
@@ -16,7 +19,12 @@ const getData = async (slug: string) => {
     content,
     image,
     titleImage,
-    smallDescription
+    smallDescription,
+    "comments": *[_type == "comment" && blog._ref == ^._id ] | order(_createdAt desc){
+      name,
+      comment,
+      _createdAt,
+    }
   }`;
 
   const data = await client.fetch(query);
@@ -70,6 +78,8 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
       <div className='my-16 max-w-none prose-a:text-primary prose-li:marker:text-primary'>
         <PortableText value={data.content} />
       </div>
+      <CommentsForm postId={data._id} />
+      <Comments comments={data.comments} />
     </article>
   );
 };

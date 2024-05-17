@@ -12,6 +12,7 @@ Features:
 - Client Side Pagination
 - Fake discount (ability to disable or set your own fake discount value)
 - SEO Friendly Blog Section - Custom metadata + PortableText
+- Blog comment section integrated with Sanity
 
 ##  [Visit project url](https://quick-commerce-theta.vercel.app/)
 

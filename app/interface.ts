@@ -19,6 +19,7 @@ export interface fullProduct {
 }
 
 export interface blogPost {
+  _id: string;
   metaTitle: string;
   metaDescription: string;
   slug: string;
@@ -27,7 +28,9 @@ export interface blogPost {
   image: string;
   smallDescription: string;
   titleImage: string;
+  comments: blogComment[];
 }
+
 export interface blogPostCard {
   _id: string;
   currentSlug: string;
@@ -36,4 +39,11 @@ export interface blogPostCard {
   image: string;
   titleImage: string;
   slug: string;
+}
+
+export interface blogComment {
+  _id: string;
+  name: string;
+  comment: string;
+  _createdAt: string;
 }
