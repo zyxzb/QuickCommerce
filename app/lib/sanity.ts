@@ -1,6 +1,6 @@
 import { createClient } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
-import { token } from '@/sanity/env';
+import { token } from './env';
 
 export const client = createClient({
   projectId: '1171aztu',
