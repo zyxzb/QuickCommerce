@@ -16,6 +16,7 @@ export interface fullProduct {
   images: [];
   description: string;
   price_id: string;
+  comments: blogComment[];
 }
 
 export interface blogPost {

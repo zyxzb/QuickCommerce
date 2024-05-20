@@ -78,7 +78,7 @@ const BlogPostPage = async ({ params }: { params: { slug: string } }) => {
       <div className='my-16 max-w-none prose-a:text-primary prose-li:marker:text-primary'>
         <PortableText value={data.content} />
       </div>
-      <CommentsForm postId={data._id} />
+      <CommentsForm id={data._id} page='blog' />
       <Comments comments={data.comments} />
     </article>
   );

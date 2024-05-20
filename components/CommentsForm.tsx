@@ -5,7 +5,12 @@ import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import toast from 'react-hot-toast';
 
-const Comments = ({ postId }: { postId: string }) => {
+interface CommentsForm {
+  id: string;
+  page: 'blog' | 'product';
+}
+
+const CommentsForm = ({ id, page }: CommentsForm) => {
   const {
     register,
     handleSubmit,
@@ -17,12 +22,12 @@ const Comments = ({ postId }: { postId: string }) => {
     const { name, email, comment } = data;
 
     try {
-      const res = await fetch('/api/comment', {
+      const res = await fetch(`/api/comment/${page}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, comment, postId }),
+        body: JSON.stringify({ name, email, comment, id }),
       });
 
       const result = await res.json();
@@ -96,4 +101,4 @@ const Comments = ({ postId }: { postId: string }) => {
   );
 };
 
-export default Comments;
+export default CommentsForm;

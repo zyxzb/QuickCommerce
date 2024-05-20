@@ -11,6 +11,8 @@ import { Button } from '@/components/ui/button';
 import ImageGallery from '@/components/ImageGallery';
 import AddToBag from '@/components/AddToBag';
 import CheckoutNow from '@/components/CheckoutNow';
+import CommentsForm from '@/components/CommentsForm';
+import Comments from '@/components/Comments';
 
 export const revalidate = 60;
 
@@ -23,8 +25,13 @@ const getData = async (slug: string) => {
       description,
       "slug": slug.current,
       "categoryName": category -> name,
-      price_id
-  } `;
+      price_id,
+      "comments": *[_type == "product_comment" && product._ref == ^._id ] | order(_createdAt desc){
+        name,
+        comment,
+        _createdAt,
+      }
+  }`;
 
   const data = await client.fetch(query);
   return data;
@@ -58,7 +65,7 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className='bg-white'>
-      <div className=' mx-auto max-w-screen-xl px-4 md:px-8'>
+      <div className='mx-auto max-w-screen-xl px-4 md:px-8'>
         <div className='grid gap-8 md:grid-cols-2'>
           <ImageGallery images={data.images} blurDataURLs={blurDataURLs} />
           <div className='md:py-8'>
@@ -111,6 +118,10 @@ const ProductPage = async ({ params }: { params: { slug: string } }) => {
               {data.description}
             </p>
           </div>
+        </div>
+        <div className='prose min-w-full'>
+          <CommentsForm id={data._id} page='product' />
+          <Comments comments={data.comments} />
         </div>
       </div>
     </div>

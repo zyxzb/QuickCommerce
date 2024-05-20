@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req: Request, res: Response) {
   const data = await req.json();
-  const { name, email, comment, postId } = data;
+  const { name, email, comment, id } = data;
 
-  if (!name || !email || !comment || !postId) {
+  if (!name || !email || !comment || !id) {
     return NextResponse.json(
       { message: 'All fields are required' },
       { status: 400 },
@@ -20,7 +20,7 @@ export async function POST(req: Request, res: Response) {
       comment,
       blog: {
         _type: 'reference',
-        _ref: postId,
+        _ref: id,
       },
     });
     return NextResponse.json(
