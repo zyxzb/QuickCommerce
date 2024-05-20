@@ -5,7 +5,7 @@ interface BlogComments {
 }
 
 const Comments = ({ comments }: BlogComments) => {
-  if (!comments) return <p>No comments..</p>;
+  if (!comments.length) return <p>No comments...</p>;
 
   return (
     <div className='mt-10'>
