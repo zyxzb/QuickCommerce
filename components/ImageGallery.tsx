@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/carousel';
 
 import { type CarouselApi } from '@/components/ui/carousel';
+import ZoomGallery from './ZoomGallery';
 
 interface Props {
   images: any;
@@ -45,19 +46,25 @@ const ImageGallery = ({ images, blurDataURLs }: Props) => {
         <CarouselContent>
           {images?.map((image: any, idx: number) => (
             <CarouselItem key={idx}>
-              <div className='aspect-square w-full overflow-hidden rounded-lg border'>
-                <Image
-                  src={urlFor(image).url()}
-                  blurDataURL={blurDataURLs[idx]}
-                  placeholder='blur'
-                  width={500}
-                  height={500}
-                  alt='photo_alt_name'
-                  className='h-full w-full cursor-pointer object-contain object-center p-1 lg:p-2'
-                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                  loading='lazy'
-                />
-              </div>
+              <ZoomGallery
+                src={urlFor(image).url()}
+                blurDataURL={blurDataURLs[idx]}
+                alt='photo_alt_name'
+              >
+                <div className='aspect-square w-full overflow-hidden rounded-lg border'>
+                  <Image
+                    src={urlFor(image).url()}
+                    blurDataURL={blurDataURLs[idx]}
+                    placeholder='blur'
+                    width={500}
+                    height={500}
+                    alt='photo_alt_name'
+                    className='h-full w-full cursor-pointer object-contain object-center p-1 lg:p-2'
+                    sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                    loading='lazy'
+                  />
+                </div>
+              </ZoomGallery>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -69,7 +76,8 @@ const ImageGallery = ({ images, blurDataURLs }: Props) => {
           </span>
         )}
       </Carousel>
-      <div className='py-2 text-sm text-gray-500'>
+
+      <div className='py-2 text-left text-sm text-gray-500'>
         <p>
           Image {current} of {count}
         </p>
