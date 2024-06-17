@@ -42,7 +42,7 @@ const ImageGallery = ({ images, blurDataURLs }: Props) => {
 
   return (
     <div>
-      <Carousel setApi={setApi}>
+      <Carousel setApi={setApi} opts={{ loop: true }}>
         <CarouselContent>
           {images?.map((image: any, idx: number) => (
             <CarouselItem key={idx}>
