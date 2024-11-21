@@ -1,18 +1,25 @@
 'use client';
 
 import gsap from 'gsap';
-import { useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const AnimateBanner = () => {
   const image = useRef<any>(null);
   const tl = useRef<any>(null);
+  const [shouldBeVisible, setShouldBeVisible] = useState(false);
 
-  // useLayoutEffect is used here because it is fired synchronously after all DOM mutations.
+  // 1.
+  // Initially, useLayoutEffect was used here because it is fired synchronously right after all DOM mutations.
   // This ensures that our animations manipulate the DOM before the browser has a chance
-  // to paint the changes, preventing any flickering or layout shift that might occur
+  // to paint the changes, preventing any flickering or layout shifts that might occur
   // if we were to use useEffect, which runs asynchronously after paint.
 
-  useLayoutEffect(() => {
+  // 2. Update
+  // Now - we're switching to useEffect because I want the visibility to be set ASYNC, AFTER all //DOM mutations and paintings.
+  // This means visibility will be set after the browser renders all changes, allowing for a smoother visual transition.
+  // This method avoids any potential flickering or layout shifts that could happen if updates were visible during the painting phase.
+
+  useEffect(() => {
     const { current: e } = image;
     const dotsBox = e.getElementById('dots-box');
     const dot1 = e.getElementById('dot-1');
@@ -110,6 +117,8 @@ const AnimateBanner = () => {
         },
         '-=0.5',
       );
+
+    setShouldBeVisible(true);
   }, []);
 
   return (
@@ -118,7 +127,7 @@ const AnimateBanner = () => {
       viewBox='0 0 400 300'
       width='406'
       height='306'
-      className='h-full w-full'
+      className={`h-full w-full ${shouldBeVisible ? 'opacity-100' : 'opacity-0'}`}
       ref={image}
     >
       <title>QuickCommerce - animate banner</title>
