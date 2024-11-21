@@ -1,13 +1,18 @@
 'use client';
 
 import gsap from 'gsap';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 const AnimateBanner = () => {
   const image = useRef<any>(null);
   const tl = useRef<any>(null);
 
-  useEffect(() => {
+  // useLayoutEffect is used here because it is fired synchronously after all DOM mutations.
+  // This ensures that our animations manipulate the DOM before the browser has a chance
+  // to paint the changes, preventing any flickering or layout shift that might occur
+  // if we were to use useEffect, which runs asynchronously after paint.
+
+  useLayoutEffect(() => {
     const { current: e } = image;
     const dotsBox = e.getElementById('dots-box');
     const dot1 = e.getElementById('dot-1');
